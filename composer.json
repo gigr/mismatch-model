@@ -1,0 +1,10 @@
+{
+    "name": "mismatch/mismatch",
+    "authors": [
+        {
+            "name": "Jonathan Geiger",
+            "email": "me@gigr.ca"
+        }
+    ],
+    "require": {}
+}
