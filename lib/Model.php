@@ -8,7 +8,7 @@
  */
 namespace Mismatch;
 
-use Mismatch\Model\Metadata;
+use Mismatch\Model\AttributeContainer;
 use InvalidArgumentException;
 
 /**
@@ -76,12 +76,14 @@ use InvalidArgumentException;
 trait Model
 {
     /**
-     * Returns the metadata for this specific model.
+     * Hook for when this trait is used on a class.
      *
-     * @return  Metadata
+     * @param  Metadata  $m
      */
-    public static function metadata()
+    public static function usingModel($m)
     {
-        return Metadata::get(get_called_class());
+        $m['attributes'] = function($m) {
+            return new AttributeContainer($m);
+        };
     }
 }
