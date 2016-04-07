@@ -14,7 +14,7 @@ use InvalidArgumentException;
 /**
  * Manages access to a model's attributes.
  */
-class AttributeContainer
+class AttributeBag
 {
     /**
      * @var  array

@@ -13,7 +13,7 @@ class ModelTest extends \PHPUnit_Framework_TestCase
 
     public function test_usingModel_setsAttributes()
     {
-        $this->assertInstanceOf('Mismatch\Model\AttributeContainer', $this->metadata['attributes']);
+        $this->assertInstanceOf('Mismatch\Model\AttributeBag', $this->metadata['attributes']);
     }
 }
 

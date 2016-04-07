@@ -4,11 +4,11 @@ namespace Mismatch\Model;
 
 use Mockery;
 
-class AttributeContainerTest extends \PHPUnit_Framework_TestCase
+class AttributeBagTest extends \PHPUnit_Framework_TestCase
 {
     public function setUp()
     {
-        $this->subject = new AttributeContainer();
+        $this->subject = new AttributeBag();
         $this->subject->set('integer', Mockery::mock('Mismatch\Model\AttributeInterface'));
     }
 
