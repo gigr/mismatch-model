@@ -8,6 +8,7 @@
  */
 namespace Mismatch;
 
+use Mismatch\Model\Metadata;
 use InvalidArgumentException;
 
 /**
@@ -74,5 +75,13 @@ use InvalidArgumentException;
  */
 trait Model
 {
-    // TODO
+    /**
+     * Returns the metadata for this specific model.
+     *
+     * @return  Metadata
+     */
+    public static function metadata()
+    {
+        return Metadata::get(get_called_class());
+    }
 }
