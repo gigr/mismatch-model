@@ -33,10 +33,10 @@ use InvalidArgumentException;
  *
  *     public static function init($m)
  *     {
- *         $m->email = new String;
- *         $m->firstName = new String;
- *         $m->lastName = new String(['null' => true]);
- *         $m->created = new Time(['default' => 'now']);
+ *         $m->email = new String($m);
+ *         $m->firstName = new String($m);
+ *         $m->lastName = new String($m, ['null' => true]);
+ *         $m->created = new Time($m, ['default' => 'now']);
  *     }
  * }
  * ```
