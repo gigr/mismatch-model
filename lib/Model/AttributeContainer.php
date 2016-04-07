@@ -10,13 +10,11 @@ namespace Mismatch\Model;
 
 use Mismatch\Model\AttributeInterface;
 use InvalidArgumentException;
-use IteratorAggregate;
-use ArrayIterator;
 
 /**
  * Manages access to a model's attributes.
  */
-class AttributeContainer implements IteratorAggregate
+class AttributeContainer
 {
     /**
      * @var  array
@@ -72,15 +70,5 @@ class AttributeContainer implements IteratorAggregate
     public function has($name)
     {
         return isset($this->attrs[$name]);
-    }
-
-    /**
-     * Allows iterating over the list of types.
-     *
-     * @return  ArrayIterator
-     */
-    public function getIterator()
-    {
-        return new ArrayIterator($this->attrs);
     }
 }
