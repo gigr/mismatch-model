@@ -2,12 +2,17 @@
     "name": "mismatch/model",
     "description": "A simple library for complex types.",
     "license": "MIT",
+
     "authors": [
         {
             "name": "Jonathan Geiger",
             "email": "me@gigr.ca"
         }
     ],
+
+    "scripts": {
+        "test": "phpunit test"
+    },
 
     "autoload": {
         "psr-4": {
