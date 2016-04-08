@@ -8,13 +8,13 @@
  */
 namespace Mismatch\Model;
 
-use Mismatch\Model\AttributeInterface;
+use Mismatch\Model\AttrInterface;
 use InvalidArgumentException;
 
 /**
  * Manages access to a model's attributes.
  */
-class AttributeBag
+class AttrBag
 {
     /**
      * @var  array
@@ -35,12 +35,12 @@ class AttributeBag
      * Attributes must have a name and type, which can be
      * in a few forms:
      *
-     *  - An AttributeInterface object.
+     *  - An AttrInterface object.
      *
      * @param  string  $name
      * @param  mixed   $type
      */
-    public function set($name, AttributeInterface $type)
+    public function set($name, AttrInterface $type)
     {
         $this->attrs[$name] = $type;
     }
@@ -49,7 +49,7 @@ class AttributeBag
      * Returns an attribute from the bag.
      *
      * @param   string  $name
-     * @return  AttributeInterface
+     * @return  AttrInterface
      * @throws  InvalidArgumentException
      */
     public function get($name)

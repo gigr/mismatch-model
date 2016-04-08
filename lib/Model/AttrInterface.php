@@ -11,7 +11,7 @@ namespace Mismatch\Model;
 /**
  * Interface that all Mismatch attributes must adhere to.
  */
-interface AttributeInterface
+interface AttrInterface
 {
     /**
      * Called when writing a value to the model in PHP land.

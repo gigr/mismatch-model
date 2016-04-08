@@ -8,7 +8,7 @@
  */
 namespace Mismatch;
 
-use Mismatch\Model\AttributeBag;
+use Mismatch\Model\AttrBag;
 use InvalidArgumentException;
 
 /**
@@ -82,8 +82,8 @@ trait Model
      */
     public static function usingModel($m)
     {
-        $m['attributes'] = function($m) {
-            return new AttributeBag($m);
+        $m['attrs'] = function($m) {
+            return new AttrBag($m);
         };
     }
 
@@ -93,7 +93,7 @@ trait Model
     private $data;
 
     /**
-     * @var  AttributeBag  The attribute bag that holds all of this model's attrs.
+     * @var  AttrBag  The attribute bag that holds all of this model's attrs.
      */
-    private $attributes;
+    private $attrs;
 }

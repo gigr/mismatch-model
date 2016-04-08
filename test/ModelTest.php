@@ -11,9 +11,9 @@ class ModelTest extends \PHPUnit_Framework_TestCase
         $this->metadata = new Metadata('Mismatch\Model\Mock');
     }
 
-    public function test_usingModel_setsAttributes()
+    public function test_usingModel_setsAttrs()
     {
-        $this->assertInstanceOf('Mismatch\Model\AttributeBag', $this->metadata['attributes']);
+        $this->assertInstanceOf('Mismatch\Model\AttrBag', $this->metadata['attrs']);
     }
 }
 

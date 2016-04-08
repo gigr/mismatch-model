@@ -4,12 +4,12 @@ namespace Mismatch\Model;
 
 use Mockery;
 
-class AttributeBagTest extends \PHPUnit_Framework_TestCase
+class AttrBagTest extends \PHPUnit_Framework_TestCase
 {
     public function setUp()
     {
-        $this->subject = new AttributeBag();
-        $this->subject->set('integer', Mockery::mock('Mismatch\Model\AttributeInterface'));
+        $this->subject = new AttrBag();
+        $this->subject->set('integer', Mockery::mock('Mismatch\Model\AttrInterface'));
     }
 
     /**
@@ -34,7 +34,7 @@ class AttributeBagTest extends \PHPUnit_Framework_TestCase
     {
         $attr = $this->subject->get('integer');
 
-        $this->assertInstanceOf('Mismatch\Model\AttributeInterface', $attr);
+        $this->assertInstanceOf('Mismatch\Model\AttrInterface', $attr);
     }
 
     public function test_get_remainsCached()
@@ -42,8 +42,8 @@ class AttributeBagTest extends \PHPUnit_Framework_TestCase
         $attr1 = $this->subject->get('integer');
         $attr2 = $this->subject->get('integer');
 
-        $this->assertInstanceOf('Mismatch\Model\AttributeInterface', $attr1);
-        $this->assertInstanceOf('Mismatch\Model\AttributeInterface', $attr2);
+        $this->assertInstanceOf('Mismatch\Model\AttrInterface', $attr1);
+        $this->assertInstanceOf('Mismatch\Model\AttrInterface', $attr2);
         $this->assertSame($attr1, $attr2);
     }
 }
