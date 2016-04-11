@@ -9,6 +9,7 @@
 namespace Mismatch;
 
 use Mismatch\Model\AttrBag;
+use Mismatch\Model\AttrResolver;
 use InvalidArgumentException;
 
 /**
@@ -84,6 +85,10 @@ trait Model
     {
         $m['attrs'] = function($m) {
             return new AttrBag($m);
+        };
+
+        $m['attr-resolver'] = function($m) {
+            return new AttrResolver($m);
         };
     }
 

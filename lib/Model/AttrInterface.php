@@ -14,6 +14,14 @@ namespace Mismatch\Model;
 interface AttrInterface
 {
     /**
+     * Constructor.
+     *
+     * @param   Mismatch\Model\Metadata  $metadata
+     * @param   array                    $opts
+     */
+    public function __construct($metadata, array $opts);
+
+    /**
      * Called when writing a value to the model in PHP land.
      *
      * @param   Mismatch\Model  $model
