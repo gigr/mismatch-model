@@ -8,6 +8,9 @@
  */
 namespace Mismatch\Model;
 
+/**
+ * Factory for building attributes.
+ */
 class AttrFactory
 {
     /**
