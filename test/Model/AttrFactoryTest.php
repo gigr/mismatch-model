@@ -92,22 +92,12 @@ class MockInteger implements AttrInterface
         $this->opts = $opts;
     }
 
-    public function write($model, $value)
+    public function set($model)
     {
         // Stubbed for test...
     }
 
-    public function read($model, $value)
-    {
-        // Stubbed for test...
-    }
-
-    public function deserialize($result, $value)
-    {
-        // Stubbed for test...
-    }
-
-    public function serialize($model, $old, $new)
+    public function get($model)
     {
         // Stubbed for test...
     }
