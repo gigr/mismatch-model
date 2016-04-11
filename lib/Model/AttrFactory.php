@@ -8,7 +8,7 @@
  */
 namespace Mismatch\Model;
 
-class AttrResolver
+class AttrFactory
 {
     /**
      * @var  Metadata  $metadata
@@ -33,12 +33,12 @@ class AttrResolver
     }
 
     /**
-     * Registers a type factory.
+     * Registers an attribute factory.
      *
      * @param  string          $alias
      * @param  string|Closure  $factory
      */
-    public function factory($name, $factory)
+    public function register($name, $factory)
     {
         $this->factories[$name] = $factory;
     }
@@ -61,7 +61,7 @@ class AttrResolver
      * @param  string  $name   The name of the attribute we're building
      * @param  mixed   $opts   Options passed to the constructed attribute
      */
-    public function resolve($name, $opts)
+    public function build($name, $opts)
     {
         // Already built, so just return it.
         if ($opts instanceof AttrInterface) {

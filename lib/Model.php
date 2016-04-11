@@ -9,7 +9,7 @@
 namespace Mismatch;
 
 use Mismatch\Model\AttrBag;
-use Mismatch\Model\AttrResolver;
+use Mismatch\Model\AttrFactory;
 use InvalidArgumentException;
 
 /**
@@ -83,12 +83,12 @@ trait Model
      */
     public static function usingModel($m)
     {
-        $m['attrs'] = function($m) {
-            return new AttrBag($m);
+        $m['attr-bag'] = function($m) {
+            return new AttrBag($m['attr-factory']);
         };
 
-        $m['attr-resolver'] = function($m) {
-            return new AttrResolver($m);
+        $m['attr-factory'] = function($m) {
+            return new AttrFactory($m);
         };
     }
 

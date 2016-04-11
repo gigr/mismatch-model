@@ -13,12 +13,12 @@ class ModelTest extends \PHPUnit_Framework_TestCase
 
     public function test_usingModel_setsAttrs()
     {
-        $this->assertInstanceOf('Mismatch\Model\AttrBag', $this->metadata['attrs']);
+        $this->assertInstanceOf('Mismatch\Model\AttrBag', $this->metadata['attr-bag']);
     }
 
-    public function test_usingModel_setsAttrResolver()
+    public function test_usingModel_setsAttrFactory()
     {
-        $this->assertInstanceOf('Mismatch\Model\AttrResolver', $this->metadata['attr-resolver']);
+        $this->assertInstanceOf('Mismatch\Model\AttrFactory', $this->metadata['attr-factory']);
     }
 }
 

@@ -8,8 +8,8 @@ class AttrBagTest extends \PHPUnit_Framework_TestCase
 {
     public function setUp()
     {
-        $this->resolver = Mockery::mock('Mismatch\Model\AttrResolver');
-        $this->subject = new AttrBag($this->resolver);
+        $this->factory = Mockery::mock('Mismatch\Model\AttrFactory');
+        $this->subject = new AttrBag($this->factory);
         $this->subject->set('integer', Mockery::mock('Mismatch\Model\AttrInterface'));
     }
 
@@ -48,21 +48,21 @@ class AttrBagTest extends \PHPUnit_Framework_TestCase
         $this->assertSame($attr1, $attr2);
     }
 
-    public function test_get_delegatesToResolver()
+    public function test_get_delegatesToFactory()
     {
         $mockAttr = Mockery::mock('Mismatch\Model\AttrInterface');
 
-        $this->resolver
-            ->shouldReceive('resolve')
-            ->with('resolvable', 'Resolvable')
+        $this->factory
+            ->shouldReceive('build')
+            ->with('factory', 'Factory')
             ->andReturn($mockAttr)
             ->once();
 
-        $this->subject->set('resolvable', 'Resolvable');
+        $this->subject->set('factory', 'Factory');
 
         // This is an implementation detail, but we should only call
-        // the resolver once. Once cached, there's no need to re-resolve.
-        $this->assertSame($mockAttr, $this->subject->get('resolvable'));
-        $this->assertSame($mockAttr, $this->subject->get('resolvable'));
+        // the factory once. Once cached, there's no need to re-build.
+        $this->assertSame($mockAttr, $this->subject->get('factory'));
+        $this->assertSame($mockAttr, $this->subject->get('factory'));
     }
 }

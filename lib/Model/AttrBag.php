@@ -8,6 +8,7 @@
  */
 namespace Mismatch\Model;
 
+use Mismatch\Model\AttrFactory;
 use Mismatch\Model\AttrInterface;
 use InvalidArgumentException;
 
@@ -22,16 +23,16 @@ class AttrBag
     private $attrs = [];
 
     /**
-     * @var  AttrResolver
+     * @var  AttrFactory
      */
-    private $resolver;
+    private $factory;
 
     /**
-     * @param  AttrResolver  $resolver
+     * @param  AttrFactory  $factory
      */
-    public function __construct($resolver)
+    public function __construct(AttrFactory $factory)
     {
-        $this->resolver = $resolver;
+        $this->factory = $factory;
     }
 
     /**
@@ -72,7 +73,7 @@ class AttrBag
         }
 
         if (!($this->attrs[$name] instanceof AttrInterface)) {
-            $this->attrs[$name] = $this->resolve($name);
+            $this->attrs[$name] = $this->build($name);
         }
 
         return $this->attrs[$name];
@@ -93,8 +94,8 @@ class AttrBag
      * @param   string
      * @return  AttrInterface
      */
-    private function resolve($name)
+    private function build($name)
     {
-        return $this->resolver->resolve($name, $this->attrs[$name]);
+        return $this->factory->build($name, $this->attrs[$name]);
     }
 }
