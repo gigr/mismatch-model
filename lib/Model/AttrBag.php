@@ -22,6 +22,19 @@ class AttrBag
     private $attrs = [];
 
     /**
+     * @var  AttrResolver
+     */
+    private $resolver;
+
+    /**
+     * @param  AttrResolver  $resolver
+     */
+    public function __construct($resolver)
+    {
+        $this->resolver = $resolver;
+    }
+
+    /**
      * @return  string
      */
     public function __toString()
@@ -35,12 +48,12 @@ class AttrBag
      * Attributes must have a name and type, which can be
      * in a few forms:
      *
-     *  - An AttrInterface object.
+     *  - An resolvable attribute type.
      *
      * @param  string  $name
      * @param  mixed   $type
      */
-    public function set($name, AttrInterface $type)
+    public function set($name, $type)
     {
         $this->attrs[$name] = $type;
     }
@@ -58,6 +71,10 @@ class AttrBag
             throw new InvalidArgumentException();
         }
 
+        if (!($this->attrs[$name] instanceof AttrInterface)) {
+            $this->attrs[$name] = $this->resolve($name);
+        }
+
         return $this->attrs[$name];
     }
 
@@ -70,5 +87,14 @@ class AttrBag
     public function has($name)
     {
         return isset($this->attrs[$name]);
+    }
+
+    /**
+     * @param   string
+     * @return  AttrInterface
+     */
+    private function resolve($name)
+    {
+        return $this->resolver->resolve($name, $this->attrs[$name]);
     }
 }
