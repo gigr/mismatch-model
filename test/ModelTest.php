@@ -20,6 +20,14 @@ class ModelTest extends \PHPUnit_Framework_TestCase
     {
         $this->assertInstanceOf('Mismatch\Model\AttrFactory', $this->metadata['attr-factory']);
     }
+
+    public function test_read_returnsValue()
+    {
+        $model = new Model\Mock();
+        $model->write('foo', 'bar');
+
+        $this->assertEquals('bar', $model->read('foo'));
+    }
 }
 
 namespace Mismatch\Model;

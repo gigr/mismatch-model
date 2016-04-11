@@ -93,12 +93,35 @@ trait Model
     }
 
     /**
-     * @var  array  The dataset that holds all of this model's data
+     * @var  array  The raw array of values.
      */
-    private $data;
+    private $_data = [];
 
     /**
-     * @var  AttrBag  The attribute bag that holds all of this model's attrs.
+     * Reads a bare value on the model.
+     *
+     * Unlike `__get`, this does not call any getters on the model.
+     *
+     * @param  string  $name
+     * @return mixed
      */
-    private $attrs;
+    public function read($name)
+    {
+        if (array_key_exists($name, $this->_data)) {
+            return $this->_data[$name];
+        }
+    }
+
+    /**
+     * Writes a value to the model.
+     *
+     * Unlike `__set`, this does not call any setters on the model.
+     *
+     * @param  string  $name
+     * @param  mixed   $value
+     */
+    public function write($name, $value)
+    {
+        $this->_data[$name] = $value;
+    }
 }
