@@ -15,6 +15,11 @@ class ModelTest extends \PHPUnit_Framework_TestCase
     {
         $this->assertInstanceOf('Mismatch\Model\AttrBag', $this->metadata['attrs']);
     }
+
+    public function test_usingModel_setsAttrResolver()
+    {
+        $this->assertInstanceOf('Mismatch\Model\AttrResolver', $this->metadata['attr-resolver']);
+    }
 }
 
 namespace Mismatch\Model;
