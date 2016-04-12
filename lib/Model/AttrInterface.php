@@ -27,13 +27,13 @@ interface AttrInterface
      * @param   Mismatch\Model  $model
      * @return  mixed
      */
-    public function get($model);
+    public function read($model);
 
     /**
      * Called when writing a value to the model in PHP land.
      *
      * @param   Mismatch\Model  $model
-     * @return  mixed
+     * @param   mixed           $value
      */
-    public function set($model);
+    public function write($model, $value);
 }
