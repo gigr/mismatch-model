@@ -8,6 +8,7 @@
  */
 namespace Mismatch\Model\Attr;
 
+use Mismatch\Model\AttrInterface;
 use InvalidArgumentException;
 
 /**
