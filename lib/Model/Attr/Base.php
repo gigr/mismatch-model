@@ -24,14 +24,6 @@ abstract class Base implements AttrInterface
     protected $name;
 
     /**
-     * The key of the attribute, which dictates the place that it is
-     * stored and retrieved from externally.
-     *
-     * @var  string
-     */
-    protected $key;
-
-    /**
      * Whether or not the attribute is nullable. If it is true, then
      * "null"s written to the model will be written untouched.
      *
@@ -62,10 +54,6 @@ abstract class Base implements AttrInterface
     public function __construct($metadata, array $opts = [])
     {
         $this->metadata = $metadata;
-
-        if (empty($opts['key'])) {
-            $opts['key'] = $name;
-        }
 
         foreach ($opts as $key => $value) {
             $this->$key = $value;
